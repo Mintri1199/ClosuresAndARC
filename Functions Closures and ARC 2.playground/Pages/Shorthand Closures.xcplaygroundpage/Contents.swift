@@ -1,10 +1,4 @@
-/*:
- # Shorthand Closures
- So, closures can help us reduce code and store blocks of code to be executed later. But, the same closures we've been writing can be written using **Type Inferance.** Let's see how that look:
- 
- First let's set up our favorite `struct`:
- */
-struct Guest: CustomDebugStringConvertible, Equatable {
+ struct Guest: CustomDebugStringConvertible, Equatable {
     var name: String
     var age: Int
     

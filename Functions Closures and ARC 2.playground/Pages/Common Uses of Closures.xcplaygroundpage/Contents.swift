@@ -75,7 +75,7 @@ let adultsListFromFilter = guestList.filter { (aGuest: Guest) in
  
  `(Element, Element) -> Bool`.
  
- **Sorted will compare two elements in the array and will use this closure to determin if the first element should be sorted before the second element.**
+ **Sorted will compare two elements in the array and will use this closure to determine if the first element should be sorted before the second element.**
  
  The Closure will return true if its first argument should be ordered before its second argument.
  - note: you can reverse this by negating the logic thus sorting by descending order vs ascending
@@ -89,7 +89,6 @@ let sortedGuestList = guestList.sorted { (aGuest: Guest, bGuest: Guest) in
         return false
     }
 }
-
 /*:
  ## Map
  Map takes an array and applies Think of the **map function as a transforming function:** for example, you can use `map` to convert an array of numbers into an array of strings.
@@ -166,7 +165,6 @@ let namesCombined = guestList.reduce("") { (sentence, aGuest) -> String in
     
     return newSentence
 }
-
 /*:
  ## You try!
  
@@ -175,34 +173,75 @@ let namesCombined = guestList.reduce("") { (sentence, aGuest) -> String in
 
 //sort these numbers
 let numbersToSort = [2, 4, 4, 2, 1, 0]
-
+let sortedNumbers = numbersToSort.sorted {(firstNum: Int, secondNum: Int) in
+    if firstNum < secondNum{
+        return true
+    }else {
+        return false
+    }
+}
+// In efficient sorting algorithm
+print(sortedNumbers)
 
 //sort the guests by name
 let guestsToSort = [sam, eric, sara, charlie]
-
+let sortedGuests = guestsToSort.sorted { (aGuest: Guest, bGuest: Guest) -> Bool in
+    if aGuest.name < bGuest.name{
+        return true
+    }else {
+        return false
+    }
+}
+print(sortedGuests)
 
 //sort the guests by age, but in descending order (youngest at the front of the array)
-
-
+let ascendingAgeOfGuests = guestsToSort.sorted { (aGuest: Guest, bGuest: Guest) -> Bool in
+    if aGuest.age < bGuest.age{
+        return true
+    }else{
+        return false
+    }
+}
+print(ascendingAgeOfGuests)
 //filter the guests to only include guests younger than 18 years
 
 
 //filter the numbers to only include even numbers
 let numbersToFilter = [2, 1, 1, 5, 6, 7, 10]
-
+let filteredList = numbersToFilter.filter { (num: Int) in
+    if num%2 == 0 {
+        return true
+    }else {
+        return false
+    }
+}
+print(filteredList)
 
 //map the numbers to be double their values (e.g. 5 gets mapped to 10)
 let numbersToDouble = [2, 4, 6, 8]
-
+let doubledList = numbersToDouble.map { (num: Int) -> Int in
+    return num*2
+}
+print(doubledList)
 
 //map the numbers into strings
 let numbersToMapIntoStrings = [2, 4, 5, 1, 2, 2]
-
+let numbersToStrings = numbersToMapIntoStrings.map { (num: Int) -> String  in
+    return String(num)
+}
+print(numbersToStrings)
 
 //reduce the numbers into a sum, but exclude negative numbers from the sum. Thus, your reduce closure should reduce this array to equal 10
 let numbersToSum = [-2, -5, -4, 5, -5, 5]
-
-
+let sum = numbersToSum.reduce(0) {(sumSoFar, num) -> Int in
+    let newSum = sumSoFar
+    if num < 0{
+        return newSum + 0
+    }else{
+        return newSum + num
+    }
+}
+print(sum)
 /*:
  We've learned more on how to use closures in our code, specifically with higher order functions, in order to clean up our code and make it more efficient.
  
