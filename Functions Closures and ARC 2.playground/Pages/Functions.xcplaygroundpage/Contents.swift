@@ -110,9 +110,11 @@ struct Guest: CustomDebugStringConvertible, Equatable {
 let eric = Guest(name: "Eric", age: 19)
 
 //write the function here
-
+func formatGuest(guest: Guest){
+    print("\(guest.name),\(guest.age)")
+}
 //call the function and pass in eric into the function
-
+formatGuest(guest: eric)
 
 /*:
  Let's invite more guests! As much as we love Eric, we can only handle close-up magic for so long.
@@ -132,10 +134,14 @@ let invitedGuests = [sam, eric, sara, charlie]
  */
 
 //write the function here
-
+func formatListOfGuests(list: [Guest]){
+    for guest in list{
+        print("\(guest.name),\(guest.age)")
+    }
+}
 
 //call the function and pass in invitedGuests into the function
-
+formatListOfGuests(list: invitedGuests)
 /*:
  Great! Now that we have our list of invited guests we can see each of their ages. Except now we realize that Charlie is still 17! His birthday isn't for another couple of months. Since we'll be having guests ranging from teens to adults, we need to see who's 18 years or older so we know who doesn't need a parent to sign a liability waiver (you know....given how the last party went...).
  
@@ -148,11 +154,19 @@ let invitedGuests = [sam, eric, sara, charlie]
  */
 
 //write the function here
-
+func checkAge(list: [Guest]) -> [Guest]{
+    var filterList = [Guest]()
+    for guest in list {
+        if guest.age >= 18{
+            filterList.append(guest)
+        }
+    }
+    return filterList
+}
 
 //call the function and use this list of guests as your input to your function
 //you can see the results by wrapping your function call in a print()
-
+print(checkAge(list: invitedGuests))
 /*:
  ## Internal and external names
  
@@ -249,7 +263,7 @@ class Customer: CustomDebugStringConvertible {
  1. As used in our `Guest` struct, this property is part of the `CustomDebugStringConvertible` protocol. Here we return the value of an instance method `getFullName() -> String`
  1. This is our **initializer, or constructor,** for our class. Since we need to update the number of customers every time we get a new one, it makes the most sense to increament that count during the creation process of a customer.
  1. A **deinit** is the opposite of an initalizer. This block of code is executed when an instance of our class is being deleted from memory. More on memory management in a later lesson. Here, we'll decrement the customer counter since we need to keep track of removed customers.
- 1. Since our class property counter (`numberOfCustomers`) is private, we created a **static method** that returns the value of that class property. This is how we prevent any code from directly accessing `numberOfCustomers`, and therefore beign able to manipulate it in a way we did not intend (such as maliciously manipulating our record of the number of customers).
+ 1. Since our class property counter (`numberOfCustomers`) is private, we created a **static method** that returns the value of that class property. This is how we prevent any code from directly accessing `numberOfCustomers`, and therefore being able to manipulate it in a way we did not intend (such as maliciously manipulating our record of the number of customers).
  1. This is our **instance method**, which is a method that returns a value that is unique to each instance of our class (unique to each customer). This method returns the first and last name values into a single string separated by a space. Each customer will have a unique return value when they call this method (unless they have the same name).
  
  Lets create some customers and print the number of customers
@@ -261,7 +275,7 @@ let dan = Customer(firstName: "Dan", lastName: "Rodgrize", age: 20)
 let timmy = Customer(firstName: "Timmy", lastName: "Turnner", age: 18)
 
 //print the number of customers here
-
+print(Customer.getNumberOfCustomers())
 /*:
  Great work here! Functions will be something we use a LOT going forward, and are the building blocks for writing code. Let's move on to the next section where we'll learn about Closures, aka anonymous functions:
  */

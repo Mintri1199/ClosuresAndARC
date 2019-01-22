@@ -66,18 +66,6 @@ let sam = Guest(name: "Sam", age: 17)
 
 blockOfCodeToPrintGuestInfo(sam)
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*:
  If you want to compare your answer, look here:
  ```
@@ -138,7 +126,7 @@ blockOfCode2("This is a string", 99)
 
 
 //two params to execute this closure and this closure returns an int
-let returnValueFromClosure = blockOfCode3(9, 9)
+let returnValueFromClosure = blockOfCode3(9,9)
 
 
 //test if userInput contains only numbers
@@ -193,7 +181,9 @@ func add(newGuest: Guest, specialRequest: (Int) -> ()) {
 let sara = Guest(name: "Sara", age: 23)
 
 //invite sara by using add(..) function here
-
+add(newGuest: sara) { (Int) in
+    print("Turn up the music!")
+}
 /*:
  We've now got a solid understanding of what closures are. Let's move on to the next section to learn more on how to use them:
  */
