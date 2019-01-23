@@ -93,8 +93,12 @@ add(newGuest: eric) { print("There are \($0 - 1) guests ahead of me") }
 
 
 //copy and paste your sorting closure here and rewrite it to be a single line of code
-
-
+ let sam = Guest(name: "Sam", age: 17)
+ let sara = Guest(name: "Sara", age: 23)
+ let charlie = Guest(name: "Charlie", age: 18)
+ let guestsToSort = [sam, eric, sara, charlie]
+ let ascendingAgeOfGuests = guestsToSort.sorted(by: {$0.age < $1.age})
+ print(ascendingAgeOfGuests)
 /*:
  Great work on becoming a master of closure optimizations! While these are not always needed, they can significantly clean up your code, and make it much easier to read and use in the future.
  
