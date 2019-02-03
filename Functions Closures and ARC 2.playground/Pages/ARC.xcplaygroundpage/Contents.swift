@@ -155,7 +155,7 @@ print(bankCustomer.name)
 bankCustomer.name = "Dan"
 
 print("after changing the name: \(danny.name)")
-print(bankCustomer.name)
+print(bankCustomer.name)n
 
 /*:
  Now in this case, notice how the value of `danny.name` remained the same. While, `bankCustomer.name` changed to the new name. This is because `bankCustomer` was a copy of `danny`
